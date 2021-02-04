@@ -226,10 +226,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-01-26 22:46:37 / Modified: 22:47:44" itemprop="dateCreated datePublished" datetime="2021-01-26T22:46:37+08:00">2021-01-26</time>
+      <time title="Created: 2021-01-26 22:46:37" itemprop="dateCreated datePublished" datetime="2021-01-26T22:46:37+08:00">2021-01-26</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-04 11:05:39" itemprop="dateModified" datetime="2021-02-04T11:05:39+08:00">2021-02-04</time>
+      </span>
 
   
 </div>
@@ -250,225 +256,14 @@
 <p>用来解决eigenvector几何重数小于代数重数的问题。设方阵为n * n，只有s个eigenvector。那么，Jordan form中有s个Jordan block，每个Jordan block的形式是：对角线为eigenvalue，上方为1。</p>
 <p>投影矩阵：满足幂等</p>
 <p>正交投影：满足幂等且为Hermitian矩阵</p>
-<h1 id="chapter-2"><a href="#chapter-2" class="headerlink" title="chapter 2"></a>chapter 2</h1><h3 id="norm-property："><a href="#norm-property：" class="headerlink" title="norm property："></a>norm property：</h3><ul>
-<li>正定（非负）</li>
-<li>齐次</li>
-<li>三角不等式</li>
-</ul>
-<h3 id="vector-norm："><a href="#vector-norm：" class="headerlink" title="vector norm："></a>vector norm：</h3><ul>
-<li>1范数 </li>
-<li>2范数 </li>
-<li>无穷范数</li>
-<li>holder不等式</li>
-<li>Vn(P)上任意向量范数是等价的</li>
-</ul>
-<h3 id="matrix-norm："><a href="#matrix-norm：" class="headerlink" title="matrix norm："></a>matrix norm：</h3><ul>
-<li>1范数</li>
-<li>2范数（tr(A^H*A)）</li>
-<li>无穷范数</li>
-<li>算子范数（与向量相容矩阵范数中最小者）</li>
-<li>谱范数（sqrt(r(A^H*A))）</li>
-<li>P^m*n上的任意矩阵范数等价</li>
-</ul>
-<h3 id="常用不等式："><a href="#常用不等式：" class="headerlink" title="常用不等式："></a>常用不等式：</h3><ul>
-<li>三角不等式</li>
-<li>向量内积不等式及相关变体（个人理解）</li>
-</ul>
-<h3 id="Problem-Set："><a href="#Problem-Set：" class="headerlink" title="Problem Set："></a>Problem Set：</h3><pre><code>1. y = Bx （8）</code></pre>
-<h1 id="chapter-3"><a href="#chapter-3" class="headerlink" title="chapter 3"></a>chapter 3</h1><h3 id="对称矩阵："><a href="#对称矩阵：" class="headerlink" title="对称矩阵："></a>对称矩阵：</h3><ul>
-<li>egienvector正交，且可以选出orthornomal egienvector</li>
-<li>实对称矩阵egienvalue均为实数</li>
-<li>可对角化为 $Q\LambdaQ^T$</li>
-</ul>
-<h3 id="Hermite矩阵："><a href="#Hermite矩阵：" class="headerlink" title="Hermite矩阵："></a>Hermite矩阵：</h3><ul>
-<li>eigenvalue为实数</li>
-<li>可对角化</li>
-</ul>
-<h3 id="Unitary矩阵："><a href="#Unitary矩阵：" class="headerlink" title="Unitary矩阵："></a>Unitary矩阵：</h3><ul>
-<li>特征值模为1</li>
-</ul>
-<h3 id="实正定矩阵："><a href="#实正定矩阵：" class="headerlink" title="实正定矩阵："></a>实正定矩阵：</h3><ul>
-<li>所有特征值大于0</li>
-<li>可分解为$A^TA$，其中A为可逆矩阵</li>
-</ul>
-<p>正三角矩阵的前提是方阵</p>
-<h3 id="A为满秩方阵时唯一分解："><a href="#A为满秩方阵时唯一分解：" class="headerlink" title="A为满秩方阵时唯一分解："></a>A为满秩方阵时唯一分解：</h3><ul>
-<li>$A = UR (QR)$</li>
-<li>$A = LU (LQ)$</li>
-<li>$A = R^HR$ (正定)</li>
-<li>$A = R^TR$ (正定)</li>
-</ul>
-<h3 id="A为任意矩阵时分解"><a href="#A为任意矩阵时分解" class="headerlink" title="A为任意矩阵时分解:"></a>A为任意矩阵时分解:</h3><ul>
-<li>A = U * (R; O) （列满秩）</li>
-<li>A = (L O) * U（行满秩）</li>
-<li>A = U * R（唯一）（列满秩）</li>
-<li>A = L * U（唯一）（行满秩）</li>
-<li>A = U * (L O; O O) * V</li>
-<li>Schur定理：A = URU^H （A为方阵，R中主对角元为A的eigenvalue）</li>
-</ul>
-<p>唯一分解的直观解释：基向量的数量（即空间维度） = 矩阵的rank（即无关向量个数）</p>
-<h3 id="谱分解："><a href="#谱分解：" class="headerlink" title="谱分解："></a>谱分解：</h3><ul>
-<li>单纯矩阵：特征值的代数重复度与几何重复度相同</li>
-<li>单纯矩阵谱分解Ai性质：幂等、分离、可加（直接相加为E，加权相加为A）</li>
-<li>单纯矩阵的充要条件（有k个不同的特征值时）：分离、可加</li>
-</ul>
-<h3 id="Hermite矩阵分解"><a href="#Hermite矩阵分解" class="headerlink" title="Hermite矩阵分解"></a>Hermite矩阵分解</h3><p>常用的还是A = U * λ * U^H</p>
-<h3 id="正规矩阵"><a href="#正规矩阵" class="headerlink" title="正规矩阵"></a>正规矩阵</h3><ul>
-<li>正规矩阵：A^H * A = A * A^H</li>
-<li>U相似：A = UBU^H</li>
-<li>U等价：A = UBV</li>
-<li>正规矩阵A与矩阵B U相似，则B也是正规矩阵</li>
-<li>三角矩阵A是正规矩阵的充要条件：A是对角矩阵</li>
-<li>A是正规矩阵的充要条件：A = U * diag( eigenvalue ) * U^H</li>
-</ul>
-<h3 id="最大秩分解"><a href="#最大秩分解" class="headerlink" title="最大秩分解"></a>最大秩分解</h3><p>A = BD</p>
-<p>B列满秩</p>
-<p>D行满秩</p>
-<p>注意计算方法</p>
-<h3 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h3><p>特征值对角化的不足：</p>
-<pre><code>The eigenvectors in X have three big problems: 
-1. They are usually not orthogonal, there are not always enough eigenvectors, 
-2. Ax = lambda * x requires A to be a square matrix. 
-The singular vectors of A solve all those problems in a perfect way</code></pre>
-<p> 由此引入了SVD<br>    A = U * Σ * V^H</p>
-<p>其中，Σ是奇异值矩阵，σ = sqrt(λ(A^T * A))</p>
-<p>引入：</p>
-<pre><code>A: m * n
-u 是属于R^n的orthonormal basis
-v 是属于R^m的orthonormal basis
-若v u之间满足：Av_i = σ_i * u_i，则可得到AV = UΣ --&gt; A = UΣV^H</code></pre>
-<p>Proof:</p>
-<pre><code>A^T * A = V (Σ^T * Σ) V^H
-所以，V是A^TA的eigenvector，eigenvalue是σ^2
-又因为Av_i = σ_i * u_i，可以证明u之间满足正交的关系。事实上，u是AA^H的eigenvector。（A^HA AA^H的eigenvalue相同</code></pre>
-<p>定理1：</p>
-<ul>
-<li>rank(A) = rank(A^HA) = rank(AA^H)</li>
-<li>A^HA AA^H eigenvalue 非负实数</li>
-<li>A^HA AA^H非零特征值相同且代数重复度相同</li>
-</ul>
-<h3 id="Problem-Set：-1"><a href="#Problem-Set：-1" class="headerlink" title="Problem Set："></a>Problem Set：</h3><p>需要重做</p>
-<h1 id="chapter-4"><a href="#chapter-4" class="headerlink" title="chapter 4"></a>chapter 4</h1><h2 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h2><h3 id="Schur不等式"><a href="#Schur不等式" class="headerlink" title="Schur不等式"></a>Schur不等式</h3><p>矩阵特征值模的平方和 &lt;= 矩阵的2范数 （当为正定矩阵时取等</p>
-<h3 id="Hirsch不等式"><a href="#Hirsch不等式" class="headerlink" title="Hirsch不等式"></a>Hirsch不等式</h3><p>A: n * n</p>
-<p>B: (A + A^H) / 2 (Hermite)</p>
-<p>C: (A - A^H) / 2 (anti Hermite)</p>
-<ul>
-<li>|λi| ≤ n max|a_ij|</li>
-<li>|Re(λi)| ≤ n max|b_ij|</li>
-<li>|Im(λi)| ≤ n max|c_ij|</li>
-</ul>
-<h3 id="Bendixson不等式-amp-推论"><a href="#Bendixson不等式-amp-推论" class="headerlink" title="Bendixson不等式&amp;推论"></a>Bendixson不等式&amp;推论</h3><pre><code>|Im(λi)| ≤ sqrt(n(n-1) / 2) max|c_ij|</code></pre>
-<ul>
-<li>实方阵的复特征值成对出现</li>
-<li>Hermite矩阵的eigenvalue均为实数</li>
-<li>Anti Hermite矩阵的eigenvalue均为虚数</li>
-</ul>
-<h3 id="Browne不等式"><a href="#Browne不等式" class="headerlink" title="Browne不等式"></a>Browne不等式</h3><pre><code>σ_n ≤ |λi| ≤ σ_1</code></pre>
-<h3 id="Hadamard不等式"><a href="#Hadamard不等式" class="headerlink" title="Hadamard不等式"></a>Hadamard不等式</h3><h2 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h2><h3 id="圆盘定理1"><a href="#圆盘定理1" class="headerlink" title="圆盘定理1"></a>圆盘定理1</h3><h3 id="圆盘定理2"><a href="#圆盘定理2" class="headerlink" title="圆盘定理2"></a>圆盘定理2</h3><p>n个圆盘并形成一个连通区域，且与剩下的不相交才可以使用该定理 </p>
-<h3 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h3><ul>
-<li><ol>
-<li>行圆盘定理适用于列</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>all eigenvalue 都落在行、列圆盘的交集区域</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>n个圆盘互不相交，A相似于对角矩阵</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>n个圆盘互不相交，A的eigenvalue全为实数</li>
-</ol>
-</li>
-</ul>
-<h3 id="定理3"><a href="#定理3" class="headerlink" title="定理3"></a>定理3</h3><h3 id="定理4"><a href="#定理4" class="headerlink" title="定理4"></a>定理4</h3><p>严格对角占优有：</p>
-<ul>
-<li>A可逆</li>
-<li>若A为Hermite且所有对角元为正，则A的eigenvalue均为正数</li>
-</ul>
-<h2 id="4-4"><a href="#4-4" class="headerlink" title="4.4"></a>4.4</h2><h3 id="Rayleigh-Quotient"><a href="#Rayleigh-Quotient" class="headerlink" title="Rayleigh Quotient"></a>Rayleigh Quotient</h3><h3 id="C-F定理"><a href="#C-F定理" class="headerlink" title="C-F定理"></a>C-F定理</h3><p>Hermite矩阵，最大最小Rayleigh Quotient = λ_k</p>
-<h3 id="Weyl定理"><a href="#Weyl定理" class="headerlink" title="Weyl定理"></a>Weyl定理</h3><p>Hermite矩阵，矩阵特征值和的大小关系</p>
-<h3 id="推论-1"><a href="#推论-1" class="headerlink" title="推论"></a>推论</h3><p>Hermite矩阵，且B为半正定时，特征值和的关系</p>
-<h2 id="4-5"><a href="#4-5" class="headerlink" title="4.5"></a>4.5</h2><h3 id="单调范数"><a href="#单调范数" class="headerlink" title="单调范数"></a>单调范数</h3><h3 id="Problem-Set：-2"><a href="#Problem-Set：-2" class="headerlink" title="Problem Set："></a>Problem Set：</h3><p>需要重做</p>
-<h1 id="chapter5"><a href="#chapter5" class="headerlink" title="chapter5"></a>chapter5</h1><h2 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h2><h3 id="序列极限性质"><a href="#序列极限性质" class="headerlink" title="序列极限性质"></a>序列极限性质</h3><ul>
-<li>线性</li>
-<li>可与乘法交换顺序</li>
-<li>可与求逆交换顺序</li>
-</ul>
-<h3 id="序列收敛充要条件"><a href="#序列收敛充要条件" class="headerlink" title="序列收敛充要条件"></a>序列收敛充要条件</h3><pre><code>lim k-&gt;∞ &#123; || A^(k) - A || = 0 &#125;</code></pre>
-<h3 id="收敛矩阵"><a href="#收敛矩阵" class="headerlink" title="收敛矩阵"></a>收敛矩阵</h3><pre><code>lim k-&gt;∞ &#123; A^k = 0 &#125;</code></pre>
-<p>充要条件：<br>    r(A) &lt; 1</p>
-<h3 id="矩阵级数"><a href="#矩阵级数" class="headerlink" title="矩阵级数"></a>矩阵级数</h3><ul>
-<li><p>绝对收敛的充要条件：|| A^(k) ||绝对收敛</p>
-</li>
-<li><p>Neumann定理 </p>
-<pre><code>  sum k = 0-&gt;∞ &#123;A^k&#125; = I + A + A^2 + ... + A^n 收敛的充要条件是r(A) &lt; 1，且和为(I - A)^-1</code></pre>
-</li>
-</ul>
-<h2 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h2><h3 id="矩阵函数"><a href="#矩阵函数" class="headerlink" title="矩阵函数"></a>矩阵函数</h3><p>常用函数级数</p>
-<h3 id="矩阵函数值计算"><a href="#矩阵函数值计算" class="headerlink" title="矩阵函数值计算"></a>矩阵函数值计算</h3><p>相似对角化：</p>
-<ul>
-<li>特征值</li>
-<li>Jordan form</li>
-</ul>
-<h3 id="相关性质"><a href="#相关性质" class="headerlink" title="相关性质"></a>相关性质</h3><ul>
-<li>if AB = BA, then exp(A) * exp(B) = exp(B) * exp(A) = exp(A + B)</li>
-<li>if AB = BA, then cos(A + B) sin(A + B)均为三角函数展开<h1 id="chapter-6"><a href="#chapter-6" class="headerlink" title="chapter 6"></a>chapter 6</h1></li>
-</ul>
-<h2 id="6-1-单边逆"><a href="#6-1-单边逆" class="headerlink" title="6.1 单边逆"></a>6.1 单边逆</h2><h3 id="左可逆"><a href="#左可逆" class="headerlink" title="左可逆"></a>左可逆</h3><p>列满秩</p>
-<h3 id="右可逆"><a href="#右可逆" class="headerlink" title="右可逆"></a>右可逆</h3><p>行满秩</p>
-<h3 id="单边逆计算方法"><a href="#单边逆计算方法" class="headerlink" title="单边逆计算方法"></a>单边逆计算方法</h3><h2 id="6-2-广义逆"><a href="#6-2-广义逆" class="headerlink" title="6.2 广义逆"></a>6.2 广义逆</h2><p>AGA = A</p>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
-<li>rank(A-) &gt;= rank(A)</li>
-<li>单边逆可以与转置、H交换运算顺序</li>
-<li>AA- A-A均为幂等矩阵，且rank(A) = rank(AA-) = rank(A-A)</li>
-<li>R(AA-) = R(A)，N(A-A) = N(A)</li>
-</ul>
-<h2 id="6-3-自反广义逆"><a href="#6-3-自反广义逆" class="headerlink" title="6.3 自反广义逆"></a>6.3 自反广义逆</h2><pre><code>AGA = A
-GAG = G</code></pre>
-<h3 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h3><ul>
-<li>Z = XAY，其中X、Y均为A的广义逆，则Z是A的自反广义逆</li>
-<li>A-是A的自反广义逆的充要条件：rank(A) = rank(A-) (满足GAG = G)</li>
-</ul>
-<h2 id="6-5-A"><a href="#6-5-A" class="headerlink" title="6.5 A+"></a>6.5 A+</h2><pre><code>AGA = A
-GAG = G
-(AG)^H = AG
-(GA)^H = GA</code></pre>
-<h3 id="性质-2"><a href="#性质-2" class="headerlink" title="性质"></a>性质</h3><ul>
-<li>最大秩分解得到的A+通式</li>
-<li>A+是唯一的</li>
-<li>(A+)+ = A</li>
-<li>运算顺序可与T、H交换</li>
-<li>(A^HA)+ = A+ * (A^H)+</li>
-<li>(AA^H)+ = (A^H)+ * A+</li>
-<li>A+ = (A^HA)+ * A^H = A^H * (A^HA)+</li>
-<li>R(A+) = R(A^H), N(A+) = N(A^H)</li>
-<li>R(A) = R(A^H) &lt;=&gt; AA+ = A+ * A</li>
-<li>R(A+A) = R(A+) = R(A^H) R(AA+) = R(A)</li>
-<li>AA+是R(A)的正交投影矩阵 A+A是R(A^H)的正交投影矩阵</li>
-<li>(AB)+ = B+A+ &lt;=&gt; R(A^HAB)属于R(B) R(BB^HA^H)属于R(A^H)</li>
-</ul>
-<h2 id="6-5-A-计算方法"><a href="#6-5-A-计算方法" class="headerlink" title="6.5 A+计算方法"></a>6.5 A+计算方法</h2><h3 id="最大秩分解-1"><a href="#最大秩分解-1" class="headerlink" title="最大秩分解"></a>最大秩分解</h3><ul>
-<li><p>行满秩</p>
-</li>
-<li><p>列满秩</p>
-<h3 id="SVD计算"><a href="#SVD计算" class="headerlink" title="SVD计算"></a>SVD计算</h3><p>A+的奇异值是A奇异值平方的倒数，故：</p>
-</li>
-<li><p>矩阵2范数：A奇异值倒数平方之和</p>
-</li>
-<li><p>矩阵算子范数：A最小奇异值的倒数</p>
-</li>
-<li><p>(AA^H)+ = U1 * D * U1^H，其中，D为AA^H特征值矩阵的逆矩阵，U1为对应的特征向量</p>
-</li>
-</ul>
-<h2 id="6-7-应用"><a href="#6-7-应用" class="headerlink" title="6.7 应用"></a>6.7 应用</h2><h3 id="有解及通解条件"><a href="#有解及通解条件" class="headerlink" title="有解及通解条件"></a>有解及通解条件</h3><p>特别注意Ax=b</p>
-<h3 id="最小二乘及最佳解"><a href="#最小二乘及最佳解" class="headerlink" title="最小二乘及最佳解"></a>最小二乘及最佳解</h3><ul>
-<li>通解</li>
-<li>A+b最小范数解</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/26/Matrix-Theory/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
