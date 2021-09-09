@@ -23,30 +23,39 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"thrownstone.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Work hard, play hard">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BLOG">
-<meta property="og:url" content="https://thrownstone.github.io/index.html">
+<meta name="description" content="引言在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。 正文开始之前，给出参考的博文及资料：  hexo插入图片及控制大小 hexo官方图片插件用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo图片插入">
+<meta property="og:url" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="Work hard, play hard">
+<meta property="og:description" content="引言在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。 正文开始之前，给出参考的博文及资料：  hexo插入图片及控制大小 hexo官方图片插件用法">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
+<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/2.png">
+<meta property="og:image" content="https://d33wubrfki0l68.cloudfront.net/5997a40576f3beca7bbbd86fe79a795e9d520d8e/87f88/themes/screenshots/landscape.png">
+<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
+<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
+<meta property="article:published_time" content="2021-09-09T08:36:37.000Z">
+<meta property="article:modified_time" content="2021-09-09T09:19:03.936Z">
 <meta property="article:author" content="thrownStone">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
 
 
-<link rel="canonical" href="https://thrownstone.github.io/">
+<link rel="canonical" href="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
-<title>BLOG</title>
+<title>hexo图片插入 | BLOG</title>
   
 
 
@@ -144,7 +153,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -157,6 +166,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">图片插入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="nav-number">2.1.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-congig-yml%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">修改_congig.yml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">下载插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">hexo插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.2.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html%E8%AF%AD%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">html语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,9 +222,10 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
@@ -234,9 +245,9 @@
       <meta itemprop="name" content="BLOG">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/" class="post-title-link" itemprop="url">hexo图片插入</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          hexo图片插入
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -269,20 +280,62 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。</p>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。</p>
 <p>正文开始之前，给出参考的博文及资料：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45509582/article/details/108582689">hexo插入图片及控制大小</a></li>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#Image">hexo官方图片插件用法</a></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#Image">hexo官方图片插件用法</a><a id="more"></a>
+<h1 id="图片插入"><a href="#图片插入" class="headerlink" title="图片插入"></a>图片插入</h1></li>
+</ul>
+<p>在hexo中，图片插入共有三种方式，分别为：</p>
+<ul>
+<li>html语法插入</li>
+<li>hexo插件</li>
+<li>markdown语法插入</li>
+</ul>
+<p>本文主要介绍前两种方式。</p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><h3 id="修改-congig-yml文件"><a href="#修改-congig-yml文件" class="headerlink" title="修改_congig.yml文件"></a>修改_congig.yml文件</h3><p>在hexo中插入图片之前，首先需要在_congig.yml中，找到<strong>post_asset_folder</strong>，并将其设置为<strong>true</strong>。</p>
+<p>上述设置之后，使用<strong>hexo n article</strong>命令新建文章后，会出现同名的文件夹atricle，将所需要插入的图片存储在该文件夹中，即可在文章中引用图片。</p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>在hexo路径下下载hexo的图片插件，命令如下：</p>
+<pre><code>npm install hexo-asset-image --save</code></pre>
+<h2 id="hexo插件"><a href="#hexo插件" class="headerlink" title="hexo插件"></a>hexo插件</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>hexo插件的语法为：</p>
+<pre><code>&#123;% asset_img [class names] /path/to/image [width] [height] '"title text" "alt text"' %&#125;</code></pre>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>将图片下载后保存到文件夹中，命名为1.png。则可以采取如下命令插入图片：</p>
+<pre><code> &#123;% asset_img 1.png 400 250 '"hexo官网"' %&#125;</code></pre>
+<p> 插入效果如下：</p>
+<img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png" class width="400" height="250" title="hexo官网">
+
+<p>观察源码，可得到如下结果</p>
+<img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/2.png" class width="600" height="140" title="source_code">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用hexo提供的插件，可以实现对图片的插入以及大小的设定，但是无法在文章中显示出图片的标题。</p>
+<h2 id="html语法"><a href="#html语法" class="headerlink" title="html语法"></a>html语法</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>html插入图片的语法为：</p>
+<pre><code>&lt;img src=&quot;image path&quot; width=xxx height=xxx /&gt;</code></pre>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>使用html语法插入时，无需将图片下载保存至本地文件夹中，可以直接使用图片的原地址进行插入，命令如下：</p>
+<pre><code>&lt;img src=&quot;https://d33wubrfki0l68.cloudfront.net/5997a40576f3beca7bbbd86fe79a795e9d520d8e/87f88/themes/screenshots/landscape.png&quot; width=400 height=250 /&gt;</code></pre>
+<p>效果为：</p>
+<img src="https://d33wubrfki0l68.cloudfront.net/5997a40576f3beca7bbbd86fe79a795e9d520d8e/87f88/themes/screenshots/landscape.png" width="400" height="250">
+
+<p>此外，html语法也可以用于插入本地图片，命令为：</p>
+<pre><code>&lt;img src=&quot;1.png&quot; width=400 height=250 /&gt;</code></pre>
+<p>效果如下：</p>
+<img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png" width="400" height="250">
+
+<p>为图片添加标题，则可以使用如下命令：</p>
+<pre><code>&lt;center&gt;
+&lt;img src=&quot;1.png&quot; width=400 height=250 /&gt;
+&#123;% link hexo官网 https://hexo.io/zh-cn/ %&#125;
+&lt;/center&gt;</code></pre>
+<p>效果为：</p>
+<center>
+    <img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png" width="400" height="250">
+    <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" title target>hexo官网</a>
+</center>
+
+<p>需要指出的是，以下代码的作用为添加超链接。</p>
+<pre><code>% link hexo官网 https://hexo.io/zh-cn/ %&#125;</code></pre>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>html语法同样可以实现图片的插入、大小调节的功能。此外，html语法还可以显示地展现图片的标题。</p>
+
     </div>
 
     
@@ -290,280 +343,25 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+          </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/09/08/KMP%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="thrownStone">
-      <meta itemprop="description" content="Work hard, play hard">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BLOG">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/08/KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">KMP算法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-08 20:12:00" itemprop="dateCreated datePublished" datetime="2021-09-08T20:12:00+08:00">2021-09-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-09 16:35:05" itemprop="dateModified" datetime="2021-09-09T16:35:05+08:00">2021-09-09</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在帮小蒋查看编写的KMP算法错误时，又把KMP算法复习了一遍。在复习时，读到<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21923021/answer/1032665486?utm_source=wechat_session&utm_medium=social&utm_oi=887384978541912064&utm_content=group1_Answer&utm_campaign=shareopn">阮行止的知乎回答</a>，受益匪浅，故记录。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/08/KMP%E7%AE%97%E6%B3%95/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/01/26/Matrix-Theory/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="thrownStone">
-      <meta itemprop="description" content="Work hard, play hard">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BLOG">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/26/Matrix-Theory/" class="post-title-link" itemprop="url">Matrix Theory</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-26 22:46:37" itemprop="dateCreated datePublished" datetime="2021-01-26T22:46:37+08:00">2021-01-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-04 11:47:13" itemprop="dateModified" datetime="2021-02-04T11:47:13+08:00">2021-02-04</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <pre><code> ---------
- |       |
-认识    实践 
- |       |
- ---------</code></pre>
-<h1 id="chapter-1"><a href="#chapter-1" class="headerlink" title="chapter 1"></a>chapter 1</h1><p>Jordan form</p>
-<p>用来解决eigenvector几何重数小于代数重数的问题。设方阵为n * n，只有s个eigenvector。那么，Jordan form中有s个Jordan block，每个Jordan block的形式是：对角线为eigenvalue，上方为1。</p>
-<p>投影矩阵：满足幂等</p>
-<p>正交投影：满足幂等且为Hermitian矩阵</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/26/Matrix-Theory/#more" rel="contents">
-                Read more &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/08/KMP%E7%AE%97%E6%B3%95/" rel="prev" title="KMP算法">
+                  <i class="fa fa-chevron-left"></i> KMP算法
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/01/26/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="thrownStone">
-      <meta itemprop="description" content="Work hard, play hard">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BLOG">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/26/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-26 12:19:48" itemprop="dateCreated datePublished" datetime="2021-01-26T12:19:48+08:00">2021-01-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-04 11:47:19" itemprop="dateModified" datetime="2021-02-04T11:47:19+08:00">2021-02-04</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/26/hello-world/#more" rel="contents">
-                Read more &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
+
 
 
 
