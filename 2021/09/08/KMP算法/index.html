@@ -31,9 +31,9 @@
 <meta property="og:description" content="引言在帮小蒋查看编写的KMP算法错误时，又把KMP算法复习了一遍。在复习时，读到阮行止的知乎回答，受益匪浅，故记录。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://thrownstone.github.io/2021/09/08/KMP%E7%AE%97%E6%B3%95/1.png">
-<meta property="og:image" content="https://thrownstone.github.io/2021/09/08/KMP%E7%AE%97%E6%B3%95/1.png">
+<meta property="og:image" content="https://thrownstone.github.io/2021/09/08/KMP%E7%AE%97%E6%B3%95/2.png">
 <meta property="article:published_time" content="2021-09-08T12:12:00.000Z">
-<meta property="article:modified_time" content="2021-09-09T08:35:05.133Z">
+<meta property="article:modified_time" content="2021-09-09T09:38:30.969Z">
 <meta property="article:author" content="thrownStone">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -163,7 +163,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Brute-Force"><span class="nav-number">3.1.</span> <span class="nav-text">Brute-Force</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%EF%BC%9A%E8%B7%B3%E8%BF%87%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="nav-number">3.2.</span> <span class="nav-text">改进：跳过不可能的距离</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Brute-Force"><span class="nav-number">3.1.</span> <span class="nav-text">Brute-Force</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-idea%EF%BC%9A%E8%B7%B3%E8%BF%87%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="nav-number">3.2.</span> <span class="nav-text">Key idea：跳过不可能的距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next%E6%95%B0%E7%BB%84"><span class="nav-number">3.3.</span> <span class="nav-text">Next数组</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -261,7 +261,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-09 16:35:05" itemprop="dateModified" datetime="2021-09-09T16:35:05+08:00">2021-09-09</time>
+        <time title="Modified: 2021-09-09 17:38:30" itemprop="dateModified" datetime="2021-09-09T17:38:30+08:00">2021-09-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -291,20 +291,24 @@
 <li>S：主串</li>
 <li>P：模式串</li>
 </ul>
-<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute-Force"></a>Brute-Force</h2><center>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute-Force"></a>Brute-Force</h2><p>在解决字符串匹配问题时，首先想到的一种方法就是暴力算法：将模式串P与主串S进行从前至后的逐位比较。</p>
+<center>
 <img src="/2021/09/08/KMP%E7%AE%97%E6%B3%95/1.png">
-<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21923021/answer/1032665486?utm_source=wechat_session&utm_medium=social&utm_oi=887384978541912064&utm_content=group1_Answer&utm_campaign=shareopn" title target>zhihu</a>
+<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21923021/answer/1032665486?utm_source=wechat_session&utm_medium=social&utm_oi=887384978541912064&utm_content=group1_Answer&utm_campaign=shareopn" title target>Brute-Force示意图</a>
 </center>
-
-<p>在解决字符串匹配问题时，首先想到的一种方法就是暴力算法：将模式串P与主串S进行从前至后的逐位比较。</p>
-<img src="/2021/09/08/KMP%E7%AE%97%E6%B3%95/1.png" class width="250" height="250" title="Brute-Force示意图">
 
 <p>下面给出一基于种C++的解法</p>
 <figure class="highlight cpp"><figcaption><span>Brute-Force</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s_len = s.size();</span><br><span class="line"><span class="keyword">int</span> p_len = p.size();</span><br><span class="line"><span class="keyword">int</span> i, j, flag = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; s_len &amp;&amp; j &lt; p_len) &#123;</span><br><span class="line">	<span class="keyword">if</span> (p[j] == s[i]) &#123;</span><br><span class="line">		i++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		j = <span class="number">0</span>;</span><br><span class="line">		flag++;</span><br><span class="line">		i = flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (j == p_len) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;true&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;false&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Brute-Force的优势在于思维量小，付出的代价则是运算量大。考虑最坏的情况，BF算法的复杂度是$O(mn)$，其中$m, n$分别代表S与P的长度。</p>
-<h2 id="改进：跳过不可能的距离"><a href="#改进：跳过不可能的距离" class="headerlink" title="改进：跳过不可能的距离"></a>改进：跳过不可能的距离</h2><p>在逐个</p>
+<h2 id="Key-idea：跳过不可能的距离"><a href="#Key-idea：跳过不可能的距离" class="headerlink" title="Key idea：跳过不可能的距离"></a>Key idea：跳过不可能的距离</h2><p>Brute-Force算法的高时间复杂度主要是因为没有利用使用到之前比较获得的结果。</p>
+<center>
+<img src="/2021/09/08/KMP%E7%AE%97%E6%B3%95/2.png">
+<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21923021/answer/1032665486?utm_source=wechat_session&utm_medium=social&utm_oi=887384978541912064&utm_content=group1_Answer&utm_campaign=shareopn" title target>无用比较示意图</a>
+</center>
 
+<p>如上图所示，第2、3次的比较其实是无用的。换言之，S[1]～S[2]其实是无用距离，可以直接跳过，令P[0]从S[3]开始进行匹配。那么，问题的关键就转变为如何跳过<strong>不可能的距离</strong>。</p>
+<h2 id="Next数组"><a href="#Next数组" class="headerlink" title="Next数组"></a>Next数组</h2>
     </div>
 
     
