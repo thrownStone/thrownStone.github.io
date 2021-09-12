@@ -23,27 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"thrownstone.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="引言在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。 正文开始之前，给出参考的博文及资料：  hexo插入图片及控制大小 hexo官方图片插件用法">
+<meta name="description" content="引言在查看int与unsigned long的内存时，发现对补码的规则已经模糊不清了，又从头看了一遍，有了更深的理解，故记录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo图片插入">
-<meta property="og:url" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/index.html">
+<meta property="og:title" content="补码">
+<meta property="og:url" content="https://thrownstone.github.io/2021/09/12/%E8%A1%A5%E7%A0%81/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="引言在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。 正文开始之前，给出参考的博文及资料：  hexo插入图片及控制大小 hexo官方图片插件用法">
+<meta property="og:description" content="引言在查看int与unsigned long的内存时，发现对补码的规则已经模糊不清了，又从头看了一遍，有了更深的理解，故记录。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
-<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/2.png">
-<meta property="og:image" content="https://d33wubrfki0l68.cloudfront.net/5997a40576f3beca7bbbd86fe79a795e9d520d8e/87f88/themes/screenshots/landscape.png">
-<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
-<meta property="og:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
-<meta property="article:published_time" content="2021-09-09T08:36:37.000Z">
-<meta property="article:modified_time" content="2021-09-09T09:19:03.936Z">
+<meta property="article:published_time" content="2021-09-12T08:48:01.000Z">
+<meta property="article:modified_time" content="2021-09-12T10:33:18.574Z">
 <meta property="article:author" content="thrownStone">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="Digital Design">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png">
 
 
-<link rel="canonical" href="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/">
+<link rel="canonical" href="https://thrownstone.github.io/2021/09/12/%E8%A1%A5%E7%A0%81/">
 
 
 <script class="page-configurations">
@@ -55,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>hexo图片插入 | BLOG</title>
+<title>补码 | BLOG</title>
   
 
 
@@ -166,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">图片插入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="nav-number">2.1.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-congig-yml%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">修改_congig.yml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">下载插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">hexo插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.2.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html%E8%AF%AD%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">html语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">负数的表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Motivation%EF%BC%9A%E5%8A%A0%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%87%8F%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Motivation：加法实现减法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E9%92%88%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">3.1.</span> <span class="nav-text">表针的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-idea%EF%BC%9A%E6%BA%A2%E5%87%BA"><span class="nav-number">3.2.</span> <span class="nav-text">Key idea：溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E8%A7%84%E5%88%99"><span class="nav-number">3.3.</span> <span class="nav-text">补码规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +227,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/">
+    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/09/12/%E8%A1%A5%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -246,7 +240,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo图片插入
+          补码
         </h1>
 
         <div class="post-meta-container">
@@ -258,7 +252,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-09-09 16:36:37 / Modified: 17:19:03" itemprop="dateCreated datePublished" datetime="2021-09-09T16:36:37+08:00">2021-09-09</time>
+      <time title="Created: 2021-09-12 16:48:01 / Modified: 18:33:18" itemprop="dateCreated datePublished" datetime="2021-09-12T16:48:01+08:00">2021-09-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,7 +260,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Technology/" itemprop="url" rel="index"><span itemprop="name">Technology</span></a>
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
         </span>
     </span>
 
@@ -280,61 +274,35 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在写关于KMP算法的文章时，遇到了插入图片的问题。通过在网上查资料，解决了图片的插入、大小调整以及标题添加的问题，故记录。</p>
-<p>正文开始之前，给出参考的博文及资料：</p>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在查看int与unsigned long的内存时，发现对补码的规则已经模糊不清了，又从头看了一遍，有了更深的理解，故记录。</p>
+<a id="more"></a>
+
+<h1 id="负数的表示"><a href="#负数的表示" class="headerlink" title="负数的表示"></a>负数的表示</h1><p>在数字设计中，一个二进制数的最高位（MBS）被称作符号位。MBS为0，表示为正数；MBS为1，表示为负数。基于此，有两种常见的负数表示方法：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45509582/article/details/108582689">hexo插入图片及控制大小</a></li>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#Image">hexo官方图片插件用法</a><a id="more"></a>
-<h1 id="图片插入"><a href="#图片插入" class="headerlink" title="图片插入"></a>图片插入</h1></li>
+<li>补码：负数 = 正数原码逐位取反+1，例如$011_2 = 3_{10}，101_2 = (-3)_{10}$</li>
+<li>反码：负数 = 正数原码逐位取反，例如$010_2 = 2_{10}，101_2 = (-2)_{10}$</li>
 </ul>
-<p>在hexo中，图片插入共有三种方式，分别为：</p>
-<ul>
-<li>html语法插入</li>
-<li>hexo插件</li>
-<li>markdown语法插入</li>
-</ul>
-<p>本文主要介绍前两种方式。</p>
-<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><h3 id="修改-congig-yml文件"><a href="#修改-congig-yml文件" class="headerlink" title="修改_congig.yml文件"></a>修改_congig.yml文件</h3><p>在hexo中插入图片之前，首先需要在_congig.yml中，找到<strong>post_asset_folder</strong>，并将其设置为<strong>true</strong>。</p>
-<p>上述设置之后，使用<strong>hexo n article</strong>命令新建文章后，会出现同名的文件夹atricle，将所需要插入的图片存储在该文件夹中，即可在文章中引用图片。</p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>在hexo路径下下载hexo的图片插件，命令如下：</p>
-<pre><code>npm install hexo-asset-image --save</code></pre>
-<h2 id="hexo插件"><a href="#hexo插件" class="headerlink" title="hexo插件"></a>hexo插件</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>hexo插件的语法为：</p>
-<pre><code>&#123;% asset_img [class names] /path/to/image [width] [height] '"title text" "alt text"' %&#125;</code></pre>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>将图片下载后保存到文件夹中，命名为1.png。则可以采取如下命令插入图片：</p>
-<pre><code> &#123;% asset_img 1.png 400 250 '"hexo官网"' %&#125;</code></pre>
-<p> 插入效果如下：</p>
-<img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png" class width="400" height="250" title="hexo官网">
-
-<p>观察源码，可得到如下结果</p>
-<img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/2.png" class width="600" height="140" title="source_code">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用hexo提供的插件，可以实现对图片的插入以及大小的设定，但是无法在文章中显示出图片的标题。</p>
-<h2 id="html语法"><a href="#html语法" class="headerlink" title="html语法"></a>html语法</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>html插入图片的语法为：</p>
-<pre><code>&lt;img src=&quot;image path&quot; width=xxx height=xxx /&gt;</code></pre>
-<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>使用html语法插入时，无需将图片下载保存至本地文件夹中，可以直接使用图片的原地址进行插入，命令如下：</p>
-<pre><code>&lt;img src=&quot;https://d33wubrfki0l68.cloudfront.net/5997a40576f3beca7bbbd86fe79a795e9d520d8e/87f88/themes/screenshots/landscape.png&quot; width=400 height=250 /&gt;</code></pre>
-<p>效果为：</p>
-<img src="https://d33wubrfki0l68.cloudfront.net/5997a40576f3beca7bbbd86fe79a795e9d520d8e/87f88/themes/screenshots/landscape.png" width="400" height="250">
-
-<p>此外，html语法也可以用于插入本地图片，命令为：</p>
-<pre><code>&lt;img src=&quot;1.png&quot; width=400 height=250 /&gt;</code></pre>
-<p>效果如下：</p>
-<img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png" width="400" height="250">
-
-<p>为图片添加标题，则可以使用如下命令：</p>
-<pre><code>&lt;center&gt;
-&lt;img src=&quot;1.png&quot; width=400 height=250 /&gt;
-&#123;% link hexo官网 https://hexo.io/zh-cn/ %&#125;
-&lt;/center&gt;</code></pre>
-<p>效果为：</p>
-<center>
-    <img src="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/1.png" width="400" height="250">
-    <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" title target>hexo官网</a>
-</center>
-
-<p>需要指出的是，以下代码的作用为添加超链接。</p>
-<pre><code>% link hexo官网 https://hexo.io/zh-cn/ %&#125;</code></pre>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>html语法同样可以实现图片的插入、大小调节的功能。此外，html语法还可以显示地展现图片的标题。</p>
+<p>但是补码为什么要按如此规则设计呢，我将对此在下文给出自己的理解。</p>
+<h1 id="Motivation：加法实现减法"><a href="#Motivation：加法实现减法" class="headerlink" title="Motivation：加法实现减法"></a>Motivation：加法实现减法</h1><p>在计算机中，负数多采用补码表示，这是因为补码能用<strong>加法实现减法</strong>。</p>
+<h2 id="表针的例子"><a href="#表针的例子" class="headerlink" title="表针的例子"></a>表针的例子</h2><p>表盘上的表针，就是加法实现减法的一个例子。表针在表盘上按顺时针<strong>轮回转动</strong>，起初指向3，后面会重新指向0。这并不是靠按逆时针方向转动实现的，而是靠继续顺时针转过9格，实现了归0。</p>
+<p>如果用数学语言描述上述过程，可以得到如下的两个“等式”：</p>
+<p>$$3 - 3 = 0$$<br>$$3 + 9 = 0$$</p>
+<p>在表盘上，对于表针来说$3 + 9 = 12$并不成立，这是因为表盘刻度的范围是：0～11。而12，<strong>溢出</strong>了表盘的范围。</p>
+<h2 id="Key-idea：溢出"><a href="#Key-idea：溢出" class="headerlink" title="Key idea：溢出"></a>Key idea：溢出</h2><p>受到表针例子的启发，不难想到：可以利用二进制数的溢出特性达到加法实现减法的效果。</p>
+<p>考虑3bit的二进制数，从000开始依次加1，可以枚举出所有的可能：</p>
+<pre><code>    --&gt;
+000 001 010 011 
+ |           |
+111 110 101 100
+    &lt;--</code></pre>
+<p>从枚举的结果不难看出，无论从哪个数开始（假设从$X$开始），沿着顺时针方向前进8（$2^3 = 7+1$）步，就会回到原点，用数学语言描述该过程为：<br>$$X + 8 - 8 = X$$<br>$-8$代表着<strong>溢出</strong>。</p>
+<p>如果要实现减法（$-Y$），那只需沿着顺时针方向少走$Y$步，即（$8-Y$）步。用数学语言描述：<br>$$X - Y = X + (8 - Y) - 8$$<br>在上式中，令$\tilde{Y} = (8 - Y)$，则可以将上式改写为：<br>$$X - Y = X + \tilde{Y} - 8$$<br>在计算机中，溢出发生后会自动抛弃多的进位，也就是说$-8$是<strong>溢出后必然带来的结果</strong>。基于此，上式可以继续简写为：<br>$$X - Y = X + \tilde{Y} $$</p>
+<p>至此，我们完成了：<strong>加法实现减法</strong>。</p>
+<h2 id="补码规则"><a href="#补码规则" class="headerlink" title="补码规则"></a>补码规则</h2><p>现在，我们可以来分析补码为什么会定义如此的规则了：正数原码逐位取反+1。</p>
+<p>首先，我们要对$\tilde{Y}$进行拆解重组：<br>$$\tilde{Y} = 8 - Y = 1 + (7 - Y)$$</p>
+<p>在上式中，令$\hat{Y} = 7 - Y$。需要注意的是，我们现在考虑的是3bit的二进制数，$7_{10} = 111_2$。因此，可以得到：<br>$$\hat{Y} = 7 \oplus Y$$<br><strong>异或的效果正是对Y逐位取反。</strong>最后：<br>$$\tilde{Y} = 1 + \hat{Y}$$<br>所以还有一个加一。</p>
+<p>现在，我们应该可以更好地理解补码的定义了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>之所以需要补码，是为了用<strong>加法实现减法</strong>，而这又需要靠<strong>溢出</strong>的特性实现，因此才有了相关的规则。</p>
 
     </div>
 
@@ -344,21 +312,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/Digital-Design/" rel="tag"># Digital Design</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/08/KMP%E7%AE%97%E6%B3%95/" rel="prev" title="KMP算法">
-                  <i class="fa fa-chevron-left"></i> KMP算法
+                <a href="/2021/09/09/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5/" rel="prev" title="hexo图片插入">
+                  <i class="fa fa-chevron-left"></i> hexo图片插入
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/12/%E8%A1%A5%E7%A0%81/" rel="next" title="补码">
-                  补码 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
