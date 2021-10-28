@@ -31,7 +31,7 @@
 <meta property="og:description" content="引言在通信系统的性能分析中，对于新传输请求的到达常基于泊松分布建立模型，为了加深对泊松分布的理解，记录泊松分布的推导过程。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-28T08:56:32.000Z">
-<meta property="article:modified_time" content="2021-10-28T12:30:30.081Z">
+<meta property="article:modified_time" content="2021-10-28T12:40:00.140Z">
 <meta property="article:author" content="thrownStone">
 <meta property="article:tag" content="Probability Theory">
 <meta name="twitter:card" content="summary">
@@ -252,7 +252,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-28 16:56:32 / Modified: 20:30:30" itemprop="dateCreated datePublished" datetime="2021-10-28T16:56:32+08:00">2021-10-28</time>
+      <time title="Created: 2021-10-28 16:56:32 / Modified: 20:40:00" itemprop="dateCreated datePublished" datetime="2021-10-28T16:56:32+08:00">2021-10-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -293,7 +293,7 @@
 <p>下面展开介绍对假设二的改进。</p>
 <p>二项分布的期望$\lambda$的计算公式为：<br>$$\lambda = n \cdot p$$<br>根据大数定律，当样本足够多时，均值以概率一与期望相等（$\overline{X} \stackrel{P}{\longrightarrow} E[X]$）。因此，可以在实际场景中用统计平均代替期望，进而计算出到达概率$p$，为：<br>$$p = \frac{\lambda}{n}$$</p>
 <p>至此，改进后的模型所对应的数学模型可以写为：<br>$$\lim_{n \to \infty} P(X=k) = \lim_{n \to \infty} C_n^k \cdot (\frac{\lambda}{n})^k \cdot (1-\frac{\lambda}{n})^{n-k}$$</p>
-<p>将上式展开化简：<br>$$<br>\begin{align}<br>\lim_{n \to \infty} P(X = k) &amp;= \lim_{n \to \infty} \frac{n!}{k!(n-k)!} \cdot (\frac{\lambda}{n})^k \cdot (1-\frac{\lambda}{n})^{n-k} \<br>&amp;= \lim_{n \to \infty} \frac{n!}{k!(n-k)!} \cdot  (\frac{\lambda}{n})^k\cdot (1-\frac{\lambda}{n})^{n} \cdot 1^{-k} \<br>&amp;= \lim_{n \to \infty} \frac{n!}{n^k(n-k)!} \cdot  (\frac{\lambda^k}{k!})\cdot e^{-\lambda} \<br>&amp;= 1 \cdot  \frac{\lambda^k}{k!} \cdot e^{-\lambda} \<br>\end{align}<br>$$</p>
+<p>将上式展开化简：<br>$$<br>\begin{align}<br>\lim_{n \to \infty} P(X = k) &amp;= \lim_{n \to \infty} \frac{n!}{k!(n-k)!} \cdot (\frac{\lambda}{n})^k \cdot (1-\frac{\lambda}{n})^{n-k} \\<br>&amp;= \lim_{n \to \infty} \frac{n!}{k!(n-k)!} \cdot  (\frac{\lambda}{n})^k\cdot (1-\frac{\lambda}{n})^{n} \cdot 1^{-k} \\<br>&amp;= \lim_{n \to \infty} \frac{n!}{n^k(n-k)!} \cdot  (\frac{\lambda^k}{k!})\cdot e^{-\lambda} \\<br>&amp;= 1 \cdot  \frac{\lambda^k}{k!} \cdot e^{-\lambda} \\<br>\end{align}<br>$$</p>
 <p>最后，化简后的结果即为泊松分布的表达式。由此，可以得到：<strong>泊松分布是二项分布的极限情况。</strong></p>
 <h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><ul>
 <li><strong>泊松分布是二项分布的极限情况；</strong></li>
