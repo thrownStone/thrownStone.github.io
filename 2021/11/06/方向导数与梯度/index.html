@@ -23,18 +23,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"thrownstone.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Work hard, play hard">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BLOG">
-<meta property="og:url" content="https://thrownstone.github.io/categories/Algorithm/index.html">
+<meta name="description" content="引言推导向量值函数的方向导数与梯度记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="方向导数与梯度">
+<meta property="og:url" content="https://thrownstone.github.io/2021/11/06/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%A2%AF%E5%BA%A6/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="Work hard, play hard">
+<meta property="og:description" content="引言推导向量值函数的方向导数与梯度记录。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-06T15:26:40.000Z">
+<meta property="article:modified_time" content="2021-11-06T16:03:54.915Z">
 <meta property="article:author" content="thrownStone">
+<meta property="article:tag" content="Optimization">
+<meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://thrownstone.github.io/categories/Algorithm/">
+<link rel="canonical" href="https://thrownstone.github.io/2021/11/06/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%A2%AF%E5%BA%A6/">
 
 
 <script class="page-configurations">
@@ -42,11 +46,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
-<title>Category: Algorithm | BLOG</title>
+<title>方向导数与梯度 | BLOG</title>
   
 
 
@@ -144,7 +148,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -157,6 +161,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">方向导数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.1.</span> <span class="nav-text">推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">梯度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E5%B9%BF"><span class="nav-number">4.</span> <span class="nav-text">推广</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,50 +217,116 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">Algorithm
-          <small>Category</small>
-        </h2>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/11/06/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%A2%AF%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="thrownStone">
+      <meta itemprop="description" content="Work hard, play hard">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          方向导数与梯度
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-06 23:26:40" itemprop="dateCreated datePublished" datetime="2021-11-06T23:26:40+08:00">2021-11-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-11-07 00:03:54" itemprop="dateModified" datetime="2021-11-07T00:03:54+08:00">2021-11-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>推导向量值函数的方向导数与梯度记录。</p>
+<a id="more"></a>
+
+<h1 id="方向导数"><a href="#方向导数" class="headerlink" title="方向导数"></a>方向导数</h1><p>对于$f:R^n \rightarrow R$，方向导数是一个数，反映了$f$沿某一方向的变化情况（大小和方向）。因此定义是：函数变化量 / 指定的方向<strong>距离</strong>。</p>
+<p>对于$f:R^n \rightarrow R^m$，方向导数是一个矩阵（Jacobi矩阵），是第一类函数的推广。</p>
+<h2 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h2><p>$f(X):R^3 \rightarrow R$，沿$P$方向的方向导数为：</p>
+<p>$$<br>\begin{aligned}<br>\frac{df(X)}{P} &amp;= \lim_{P\to0}\frac{f(X+P) - f(X)}{||P||} \\<br>&amp;= \frac{f(x_1 + p_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2, x_3)}{||P||} \\<br>&amp;= \frac{f(x_1 + p_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2 + p_2, x_3 + p_3) + f(x_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2, x_3)}{||P||} \\<br>&amp;= \frac{\partial f }{\partial x_1} \cdot \frac{p_1}{||P||} + \frac{f(x_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2 ,x_3 + p_3) + f(x_1, x_2, x_3 + p_3) - f(x_1, x_2, x_3)}{||P||} \\<br>&amp;= \frac{\partial f }{\partial x_1} \cdot \frac{p_1}{||P||} + \frac{\partial f }{\partial x_2} \cdot \frac{p_2}{||P||} + \frac{\partial f }{\partial x_3} \cdot \frac{p_3}{||P||} \\<br>&amp;= \sum_{i=1}^3\frac{\partial f }{\partial x_i} \cdot cos\alpha_i<br>\end{aligned}<br>$$</p>
+<p>由上述推导过程可以看到，$f$的方向导数，是各个基方向上偏导数的合成（推导过程也是：逐个分析，依次在$x_i$方向上变动，最后结果进行矢量相加）。</p>
+<h1 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h1><p>根据方向导数的推导结果，不难推广至一般情况$f:R^n \rightarrow R$：</p>
+<p>$$<br>\frac{df(X)}{P} = \sum_{i=1}^n\frac{\partial f }{\partial x_i} \cdot cos\alpha_i<br>$$</p>
+<p>观察可以发现，上式可以写成向量的内积:</p>
+<p>$$<br>\frac{df(X)}{P} = (\cdots, \frac{\partial f }{\partial x_i}, \cdots) \cdot (\cdots, cos\alpha_i, \cdots)^T<br>$$</p>
+<p>可以得到：只要知道各个基方向的偏导数，以及所求方向，就可以求出具体的方向导数。而各个基方向上的偏导数所组成的列向量，正是梯度。</p>
+<h1 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h1><p>对于$f:R^n \rightarrow R^m$</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-08T20:12:00+08:00"
-              content="2021-09-08">
-          09-08
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/08/KMP%E7%AE%97%E6%B3%95/" itemprop="url">
-            <span itemprop="name">KMP算法</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Optimization/" rel="tag"># Optimization</a>
+              <a href="/tags/Calculus/" rel="tag"># Calculus</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/06/convex-set/" rel="prev" title="convex set">
+                  <i class="fa fa-chevron-left"></i> convex set
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
+
 
 
 <script>
