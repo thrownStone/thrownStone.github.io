@@ -31,8 +31,9 @@
 <meta property="og:description" content="引言推导向量值函数的方向导数与梯度记录。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-06T15:26:40.000Z">
-<meta property="article:modified_time" content="2021-11-06T16:03:54.915Z">
+<meta property="article:modified_time" content="2021-11-09T05:47:07.666Z">
 <meta property="article:author" content="thrownStone">
+<meta property="article:tag" content="Matrix">
 <meta property="article:tag" content="Optimization">
 <meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
@@ -161,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">方向导数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.1.</span> <span class="nav-text">推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">梯度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E5%B9%BF"><span class="nav-number">4.</span> <span class="nav-text">推广</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">方向导数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.1.</span> <span class="nav-text">推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">梯度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E5%B9%BF"><span class="nav-number">4.</span> <span class="nav-text">推广</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#X-TAX"><span class="nav-number">4.1.1.</span> <span class="nav-text">$X^TAX$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-X-g-h-X"><span class="nav-number">4.1.2.</span> <span class="nav-text">$f(X) &#x3D; g(h(X))$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -176,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -259,7 +260,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-11-07 00:03:54" itemprop="dateModified" datetime="2021-11-07T00:03:54+08:00">2021-11-07</time>
+        <time title="Modified: 2021-11-09 13:47:07" itemprop="dateModified" datetime="2021-11-09T13:47:07+08:00">2021-11-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -287,15 +288,28 @@
 <h1 id="方向导数"><a href="#方向导数" class="headerlink" title="方向导数"></a>方向导数</h1><p>对于$f:R^n \rightarrow R$，方向导数是一个数，反映了$f$沿某一方向的变化情况（大小和方向）。因此定义是：函数变化量 / 指定的方向<strong>距离</strong>。</p>
 <p>对于$f:R^n \rightarrow R^m$，方向导数是一个矩阵（Jacobi矩阵），是第一类函数的推广。</p>
 <h2 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h2><p>$f(X):R^3 \rightarrow R$，沿$P$方向的方向导数为：</p>
-<p>$$<br>\begin{aligned}<br>\frac{df(X)}{P} &amp;= \lim_{P\to0}\frac{f(X+P) - f(X)}{||P||} \\<br>&amp;= \frac{f(x_1 + p_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2, x_3)}{||P||} \\<br>&amp;= \frac{f(x_1 + p_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2 + p_2, x_3 + p_3) + f(x_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2, x_3)}{||P||} \\<br>&amp;= \frac{\partial f }{\partial x_1} \cdot \frac{p_1}{||P||} + \frac{f(x_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2 ,x_3 + p_3) + f(x_1, x_2, x_3 + p_3) - f(x_1, x_2, x_3)}{||P||} \\<br>&amp;= \frac{\partial f }{\partial x_1} \cdot \frac{p_1}{||P||} + \frac{\partial f }{\partial x_2} \cdot \frac{p_2}{||P||} + \frac{\partial f }{\partial x_3} \cdot \frac{p_3}{||P||} \\<br>&amp;= \sum_{i=1}^3\frac{\partial f }{\partial x_i} \cdot cos\alpha_i<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>\frac{df(X)}{P} &amp;= \lim_{P\to0}\frac{f(X+P) - f(X)}{\parallel P \parallel} \\<br>&amp;= \frac{f(x_1 + p_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2, x_3)}{\parallel P \parallel} \\<br>&amp;= \frac{f(x_1 + p_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2 + p_2, x_3 + p_3) + f(x_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2, x_3)}{\parallel P \parallel} \\<br>&amp;= \frac{\partial f }{\partial x_1} \cdot \frac{p_1}{\parallel P \parallel} + \frac{f(x_1, x_2 + p_2, x_3 + p_3) - f(x_1, x_2 ,x_3 + p_3) + f(x_1, x_2, x_3 + p_3) - f(x_1, x_2, x_3)}{\parallel P \parallel} \\<br>&amp;= \frac{\partial f }{\partial x_1} \cdot \frac{p_1}{\parallel P \parallel} + \frac{\partial f }{\partial x_2} \cdot \frac{p_2}{\parallel P \parallel} + \frac{\partial f }{\partial x_3} \cdot \frac{p_3}{\parallel P \parallel} \\<br>&amp;= \sum_{i=1}^3\frac{\partial f }{\partial x_i} \cdot cos\alpha_i<br>\end{aligned}<br>$$</p>
 <p>由上述推导过程可以看到，$f$的方向导数，是各个基方向上偏导数的合成（推导过程也是：逐个分析，依次在$x_i$方向上变动，最后结果进行矢量相加）。</p>
 <h1 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h1><p>根据方向导数的推导结果，不难推广至一般情况$f:R^n \rightarrow R$：</p>
 <p>$$<br>\frac{df(X)}{P} = \sum_{i=1}^n\frac{\partial f }{\partial x_i} \cdot cos\alpha_i<br>$$</p>
 <p>观察可以发现，上式可以写成向量的内积:</p>
-<p>$$<br>\frac{df(X)}{P} = (\cdots, \frac{\partial f }{\partial x_i}, \cdots) \cdot (\cdots, cos\alpha_i, \cdots)^T<br>$$</p>
-<p>可以得到：只要知道各个基方向的偏导数，以及所求方向，就可以求出具体的方向导数。而各个基方向上的偏导数所组成的列向量，正是梯度。</p>
+<p>$$<br>\frac{df(X)}{P} = (\cdots, \frac{\partial f }{\partial x_i}, \cdots) \cdot \begin{bmatrix} \vdots \\ cos\alpha_i \\ \vdots \end{bmatrix}<br>$$</p>
+<p>可以得到：只要知道各个基方向的偏导数，以及所求方向，就可以求出具体的方向导数。而各个基方向上的偏导数所组成的列向量，正是梯度。即：</p>
+<p>$$<br>\frac{df(X)}{P} = \nabla f(X)^T \cdot \begin{bmatrix} \vdots \\ cos\alpha_i \\ \vdots \end{bmatrix}<br>$$</p>
+<p>$$<br>\nabla f(X) = (\cdots, \frac{\partial f }{\partial x_i}, \cdots) ^ T<br>$$</p>
 <h1 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h1><p>对于$f:R^n \rightarrow R^m$</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2>
+<p>Let$A = f(X)$，其中$A = (f_1(X), \cdots, f_i(X), \cdots, f_n(X))^T$。可以将每个元素视为$f_i:R^n \rightarrow R^m$，即：<br>$$<br>\begin{aligned}<br>\frac{df(X)}{P} &amp;= \frac{f(X+P) - f(X)}{\parallel P \parallel} \\<br>&amp;= \frac{(\cdots, f_i(X+P) - f_i(X), \cdots)^T}{\parallel P \parallel} \\<br>&amp;= (\cdots, \frac{f_i(X+P) - f_i(X)}{\parallel P \parallel},\cdots) ^ T\\<br>\end{aligned}<br>$$</p>
+<p>将每个$f_i(X)$的方向导数写出，得到的就是$f(X)$的导数，也即上文提到的Jacobi矩阵，记作$f’(X)$，<br>$$<br>\begin{aligned}<br>\frac{df(X)}{P} &amp;=<br>\begin{bmatrix}\vdots &amp;\cdots &amp;\vdots&amp; \cdots &amp;\vdots \\<br>\frac{\partial f_i(X)}{\partial x_1} &amp;\cdots &amp;\frac{\partial f_i(X)}{\partial x_i} &amp;\cdots &amp;\frac{\partial f_i(X)}{\partial x_n} \\<br>\vdots &amp;\cdots &amp;\vdots &amp;\cdots &amp;\vdots \\<br> \end{bmatrix} \cdot \begin{bmatrix} \vdots \\ cos\alpha_i \\ \vdots \end{bmatrix} \\<br> &amp;= f’(X) \cdot \begin{bmatrix} \vdots \\ cos\alpha_i \\ \vdots \end{bmatrix}<br> \end{aligned}<br> $$<br>进一步，可以的得到梯度为: $\nabla f(X) = f’(X) ^ T$</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><h3 id="X-TAX"><a href="#X-TAX" class="headerlink" title="$X^TAX$"></a>$X^TAX$</h3><p>$$<br>\begin{aligned}<br>\frac{f(X+dX) - f(X)}{\parallel dX \parallel} &amp;= \frac{X^TAdX + (dX)^TAX + (dX)^TAdX}{\parallel dX \parallel} \\<br>&amp;= \frac{X^TAdX + (dX)^TAX}{\parallel dX \parallel} \\<br>&amp;= (X^TA + X^TA^T) \cdot \begin{bmatrix} \vdots \\ cos\alpha_i \\ \vdots \end{bmatrix}<br>\end{aligned}<br>$$<br>根据上式，可以得到:<br>$$<br>\nabla f(X) = (X^TA + X^TA^T)^T = AX + A^TX<br>$$</p>
+<h3 id="f-X-g-h-X"><a href="#f-X-g-h-X" class="headerlink" title="$f(X) = g(h(X))$"></a>$f(X) = g(h(X))$</h3><p>Let $h:R^n \rightarrow R^m, g:R^m \rightarrow R$, $Y = h(X)$</p>
+<p>$$<br>\begin{aligned}<br>\frac{f(X+dX) - f(X)}{\parallel dX \parallel} &amp;= \frac{g(h(X+dX)) - g(h(X))}{\parallel dX \parallel} \\<br>&amp;= \frac{g(h(Y + \nabla h(X)^T \cdot dX)) - g(Y)}{\parallel dX \parallel} \\<br>&amp;= \frac{g(Y) + \nabla g(Y)^T \cdot (\nabla h(X)^T \cdot dX) - g(Y)}{\parallel dX \parallel}  \\<br>&amp;=  \nabla g(Y)^T \nabla h(X)^T \cdot \begin{bmatrix}  \vdots \\ cos\alpha_i \\ \vdots \end{bmatrix}<br>\end{aligned}<br>$$<br>根据上式可以得到：<br>$$<br>\nabla f(X) = (\nabla g(Y)^T \nabla h(X)^T) ^ T = \nabla h(X) \nabla g(Y)<br>$$</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><ul>
+<li>方向导数刻画的是某个方向上函数的单位改变量（变化率）；</li>
+<li>方向导数可分解成：各个基方向上的变化矢量（方向：所在基方向，大小：所在基方向偏导数）沿所给方向的矢量和，即沿所求方向做投影并结果相加；</li>
+<li>将各个基方向的变化矢量整合为列向量，即为梯度。方向导数也就为：梯度与所求方向的单位矢量做内积</li>
+<li>数学表达: $\nabla f(X) = (\cdots, \frac{\partial f}{\partial x}, \cdots)^T, \frac{df(X)}{dP} = \nabla f(X)^T \cdot \frac{P}{\parallel P \parallel}$</li>
+</ul>
+
     </div>
 
     
@@ -304,6 +318,7 @@
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/Matrix/" rel="tag"># Matrix</a>
               <a href="/tags/Optimization/" rel="tag"># Optimization</a>
               <a href="/tags/Calculus/" rel="tag"># Calculus</a>
           </div>
@@ -317,6 +332,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/11/07/ML%E8%AE%AD%E7%BB%83%E6%8C%87%E5%AF%BC/" rel="next" title="ML训练指导">
+                  ML训练指导 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

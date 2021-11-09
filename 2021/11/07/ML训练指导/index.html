@@ -23,20 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"thrownstone.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Work hard, play hard">
+<meta name="description" content="引言记录李宏毅老师2021春季机器学习课程给出的训练过程知道。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="802.1x协议性能分析">
-<meta property="og:url" content="https://thrownstone.github.io/2021/09/26/802-1x%E5%8D%8F%E8%AE%AE%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="ML训练指导">
+<meta property="og:url" content="https://thrownstone.github.io/2021/11/07/ML%E8%AE%AD%E7%BB%83%E6%8C%87%E5%AF%BC/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="Work hard, play hard">
+<meta property="og:description" content="引言记录李宏毅老师2021春季机器学习课程给出的训练过程知道。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-09-26T14:58:07.000Z">
-<meta property="article:modified_time" content="2021-09-26T14:58:07.087Z">
+<meta property="article:published_time" content="2021-11-06T16:07:18.000Z">
+<meta property="article:modified_time" content="2021-11-09T05:58:18.834Z">
 <meta property="article:author" content="thrownStone">
+<meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://thrownstone.github.io/2021/09/26/802-1x%E5%8D%8F%E8%AE%AE%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">
+<link rel="canonical" href="https://thrownstone.github.io/2021/11/07/ML%E8%AE%AD%E7%BB%83%E6%8C%87%E5%AF%BC/">
 
 
 <script class="page-configurations">
@@ -48,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>802.1x协议性能分析 | BLOG</title>
+<title>ML训练指导 | BLOG</title>
   
 
 
@@ -146,7 +147,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -159,6 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Guide"><span class="nav-number">2.</span> <span class="nav-text">General Guide</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Traing"><span class="nav-number">2.1.</span> <span class="nav-text">Traing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Bias"><span class="nav-number">2.1.1.</span> <span class="nav-text">Model Bias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimization"><span class="nav-number">2.1.2.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distinguish"><span class="nav-number">2.1.3.</span> <span class="nav-text">Distinguish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">2.1.4.</span> <span class="nav-text">Tips</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">2.2.</span> <span class="nav-text">Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overfitting"><span class="nav-number">2.2.1.</span> <span class="nav-text">Overfitting</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +227,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/09/26/802-1x%E5%8D%8F%E8%AE%AE%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://thrownstone.github.io/2021/11/07/ML%E8%AE%AD%E7%BB%83%E6%8C%87%E5%AF%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -238,7 +240,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          802.1x协议性能分析
+          ML训练指导
         </h1>
 
         <div class="post-meta-container">
@@ -249,8 +251,15 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-09-26 22:58:07" itemprop="dateCreated datePublished" datetime="2021-09-26T22:58:07+08:00">2021-09-26</time>
+      <time title="Created: 2021-11-07 00:07:18" itemprop="dateCreated datePublished" datetime="2021-11-07T00:07:18+08:00">2021-11-07</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-11-09 13:58:18" itemprop="dateModified" datetime="2021-11-09T13:58:18+08:00">2021-11-09</time>
+      </span>
 
   
 </div>
@@ -262,7 +271,31 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>记录李宏毅老师2021春季机器学习课程给出的训练过程知道。</p>
+<a id="more"></a>
+
+<h1 id="General-Guide"><a href="#General-Guide" class="headerlink" title="General Guide"></a>General Guide</h1><p>（插图）</p>
+<h2 id="Traing"><a href="#Traing" class="headerlink" title="Traing"></a>Traing</h2><p>两种情况：</p>
+<ul>
+<li>Model bias </li>
+<li>Optimization</li>
+</ul>
+<h3 id="Model-Bias"><a href="#Model-Bias" class="headerlink" title="Model Bias"></a>Model Bias</h3><p>（大海捞针，但是针不在海里）<br>（features，nn structure）</p>
+<h3 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h3><p>（大海捞针，但是无法接近针）</p>
+<h3 id="Distinguish"><a href="#Distinguish" class="headerlink" title="Distinguish"></a>Distinguish</h3><p>（比较train loss 和 test loss）</p>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>（先从简单的、浅层网络开始训练）</p>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p>两种情况：</p>
+<ul>
+<li>overfitting</li>
+<li>mismatch（train data 和 test data有不同的分布）</li>
+</ul>
+<h3 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h3><p>解决办法：</p>
+<ul>
+<li>获取更多data</li>
+<li>data augmentation</li>
+<li>限制模型的弹性（less/sharing parameter，early stop，regularization，dropout ）</li>
+</ul>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1>
     </div>
 
     
@@ -270,18 +303,21 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/26/Trunking-Efficiency/" rel="prev" title="Trunking Efficiency">
-                  <i class="fa fa-chevron-left"></i> Trunking Efficiency
+                <a href="/2021/11/06/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%A2%AF%E5%BA%A6/" rel="prev" title="方向导数与梯度">
+                  <i class="fa fa-chevron-left"></i> 方向导数与梯度
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/27/ml2021spring-hw1/" rel="next" title="ml2021spring_hw1">
-                  ml2021spring_hw1 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/11/09/%E7%9F%A9%E9%98%B5%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2%E6%B5%85%E6%80%9D/" rel="next" title="矩阵与空间变换浅思">
+                  矩阵与空间变换浅思 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
