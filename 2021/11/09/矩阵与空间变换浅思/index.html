@@ -31,7 +31,7 @@
 <meta property="og:description" content="引言圆与椭圆变换引发的对矩阵空间变换作用的思考。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-09T05:58:49.000Z">
-<meta property="article:modified_time" content="2021-11-09T06:08:01.202Z">
+<meta property="article:modified_time" content="2021-11-13T13:36:05.110Z">
 <meta property="article:author" content="thrownStone">
 <meta property="article:tag" content="Matrix">
 <meta name="twitter:card" content="summary">
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%82%B9%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">空间中点的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%9F%BA%E5%90%91%E9%87%8F%E4%B8%8B%E7%9B%B8%E5%90%8C%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">不同基向量下相同点的坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E9%87%8F%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.2.</span> <span class="nav-text">定量描述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">矩阵的空间变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC"><span class="nav-number">3.1.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%B8%E7%BC%A9"><span class="nav-number">3.2.</span> <span class="nav-text">伸缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%A6%E5%90%88%E5%8F%98%E5%8C%96"><span class="nav-number">3.3.</span> <span class="nav-text">符合变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%E2%80%93-gt-%E4%BC%B8%E7%BC%A9"><span class="nav-number">3.3.1.</span> <span class="nav-text">旋转–&gt;伸缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B8%E7%BC%A9%E2%80%93-gt-%E6%97%8B%E8%BD%AC"><span class="nav-number">3.3.2.</span> <span class="nav-text">伸缩–&gt;旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%86%E4%B8%8E%E6%A4%AD%E5%9C%86%E5%8F%98%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">圆与椭圆变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%82%B9%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">空间中点的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%9F%BA%E5%90%91%E9%87%8F%E4%B8%8B%E7%9B%B8%E5%90%8C%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">不同基向量下相同点的坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E8%A7%A3%E8%AF%BB"><span class="nav-number">2.2.</span> <span class="nav-text">两种解读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E7%BF%BB%E8%AF%91%E2%80%9D"><span class="nav-number">2.2.1.</span> <span class="nav-text">“翻译”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">2.2.2.</span> <span class="nav-text">空间变换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">矩阵的空间变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC"><span class="nav-number">3.1.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%B8%E7%BC%A9"><span class="nav-number">3.2.</span> <span class="nav-text">伸缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E5%8F%98%E5%8C%96"><span class="nav-number">3.3.</span> <span class="nav-text">复合变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%E2%80%93-gt-%E4%BC%B8%E7%BC%A9"><span class="nav-number">3.3.1.</span> <span class="nav-text">旋转–&gt;伸缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B8%E7%BC%A9%E2%80%93-gt-%E6%97%8B%E8%BD%AC"><span class="nav-number">3.3.2.</span> <span class="nav-text">伸缩–&gt;旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%86%E4%B8%8E%E6%A4%AD%E5%9C%86%E5%8F%98%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">圆与椭圆变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -250,10 +250,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-11-09 13:58:49 / Modified: 14:08:01" itemprop="dateCreated datePublished" datetime="2021-11-09T13:58:49+08:00">2021-11-09</time>
+      <time title="Created: 2021-11-09 13:58:49" itemprop="dateCreated datePublished" datetime="2021-11-09T13:58:49+08:00">2021-11-09</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-11-13 21:36:05" itemprop="dateModified" datetime="2021-11-13T21:36:05+08:00">2021-11-13</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -277,24 +283,66 @@
         <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>圆与椭圆变换引发的对矩阵空间变换作用的思考。</p>
 <a id="more"></a>
 
-<h1 id="空间中点的表示"><a href="#空间中点的表示" class="headerlink" title="空间中点的表示"></a>空间中点的表示</h1><ul>
+<h1 id="空间中点的表示"><a href="#空间中点的表示" class="headerlink" title="空间中点的表示"></a>空间中点的表示</h1><p>在任意的一个空间中，我们要描述其中一个点的位置，需要以下三步：</p>
+<ul>
 <li>确定原点</li>
 <li>确定基向量</li>
 <li>确定点的坐标/系数</li>
 </ul>
-<h2 id="不同基向量下相同点的坐标"><a href="#不同基向量下相同点的坐标" class="headerlink" title="不同基向量下相同点的坐标"></a>不同基向量下相同点的坐标</h2><p>$P\cdot \vec{b} = Q \cdot \vec{a}$</p>
-<h2 id="定量描述"><a href="#定量描述" class="headerlink" title="定量描述"></a>定量描述</h2><p>确定默认坐标系，其他坐标系都适用该默认坐标系的基向量表示</p>
-<p>默认坐标系（xOy坐标系，右手坐标系，…）</p>
-<h1 id="矩阵的空间变换"><a href="#矩阵的空间变换" class="headerlink" title="矩阵的空间变换"></a>矩阵的空间变换</h1><p>改变基变量</p>
+<p>例如，确定一组基向量记为$P = (\cdots, \vec{p_i}, \cdots)$，利用矢量和，空间中任意点$X$的位置可以如下描述：<br>$$<br>\vec{X} = (p_1, \cdots, \vec{p_i}, \cdots, p_n) \cdot \begin{bmatrix} a_1\\ \vdots \\ a_i\\ \vdots\\ a_n \end{bmatrix}<br>$$<br>上式用语言描述为：在$P$规定的基向量（坐标系）下，点$X$的描述（坐标）是$\vec{a} = (a_1, a_2, \cdots, a_n) ^ T$。</p>
+<h2 id="不同基向量下相同点的坐标"><a href="#不同基向量下相同点的坐标" class="headerlink" title="不同基向量下相同点的坐标"></a>不同基向量下相同点的坐标</h2><p>显然，对于同一个点$X$，在不同基向量（坐标系）下有不同的坐标。在$P$下，$X$的坐标为$\vec{a}$；在$Q$下，$X$的坐标为$\vec{b}$。</p>
+<p>为了定量分析不同基向量间的联系，引入一个统一的默认基向量（坐标系）用来<strong>统一描述</strong>不同的基向量，例如xOy坐标系，右手坐标系，左手坐标系等。</p>
+<p>在默认坐标系中，点$X$具有唯一的坐标$\vec{x} = (x_1, x_2, \cdots, x_n)^T$。<br>因此不难得到：<br>$$\vec{x} = P\cdot \vec{a} = Q \cdot \vec{b}$$</p>
+<h2 id="两种解读"><a href="#两种解读" class="headerlink" title="两种解读"></a>两种解读</h2><p>对$\vec{x} = P\cdot \vec{a} = Q \cdot \vec{b}$有两种角度的解读。</p>
+<h3 id="“翻译”"><a href="#“翻译”" class="headerlink" title="“翻译”"></a>“翻译”</h3><p>已知：</p>
+<ul>
+<li>$Q$</li>
+<li>点$X$在$Q$坐标下的坐标$\vec{b}$。</li>
+</ul>
+<p>求解：</p>
+<ul>
+<li>$P$坐标系下点$X$的坐标。</li>
+</ul>
+<p>显然，<br>$$\vec{a} = P^{-1} Q \vec{b}$$</p>
+<h3 id="空间变换"><a href="#空间变换" class="headerlink" title="空间变换"></a>空间变换</h3><p>已知：</p>
+<ul>
+<li>点$X$在默认坐标系下的坐标$\vec{x}$</li>
+</ul>
+<p>对点$X$所在空间进行某种变换，变换后点$X$的坐标变为$\vec{a}$，该过程可描述为：<br>$$\vec{x} = P\cdot \vec{a}$$</p>
+<p>下文将从空间变换的角度展开。</p>
+<h1 id="矩阵的空间变换"><a href="#矩阵的空间变换" class="headerlink" title="矩阵的空间变换"></a>矩阵的空间变换</h1><p>矩阵的空间变换是通过改变基向量实现的。在这个过程中：</p>
+<ul>
+<li>坐标轴的方向会改变；</li>
+<li>坐标轴的单位距离大小会改变；</li>
+<li>源点位置不会改变。</li>
+</ul>
+<p>因此，通过改变基变量，矩阵可以实现三种空间变换</p>
 <ul>
 <li>旋转</li>
 <li>伸缩</li>
-<li>降维压缩</li>
+<li>降维压缩（将向量从$R^n$空间映射到$R^m$空间，$R^n \to R^m, m &lt; n$，矩阵不满秩）。</li>
 </ul>
-<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>角度矩阵 –&gt; 正交矩阵</p>
-<h2 id="伸缩"><a href="#伸缩" class="headerlink" title="伸缩"></a>伸缩</h2><p>沿着基向量的方向对空间矢量进行伸缩</p>
-<p>变化后，在默认坐标系下观察，角度会变化；但在新坐标系下观察，角度没有变化</p>
-<h2 id="符合变化"><a href="#符合变化" class="headerlink" title="符合变化"></a>符合变化</h2><h3 id="旋转–-gt-伸缩"><a href="#旋转–-gt-伸缩" class="headerlink" title="旋转–&gt;伸缩"></a>旋转–&gt;伸缩</h3><p>$\Lambda \cdot Q$</p>
+<p>矩阵不会实现：平移变换。</p>
+<p>下文将讨论旋转与伸缩变换。</p>
+<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>点$X$的坐标（位置）可以用长度与夹角描述，即$\vec{x} = (l\cdot cos\alpha_1, l\cdot cos\alpha_2, \cdots, l\cdot cos\alpha_n)^T$。</p>
+<p>具体地，考虑$R^2$空间，$\vec{x} = (l\cdot cos\alpha, l\cdot sin\alpha)$，$\alpha$为$\vec{x}$与横坐标夹角。</p>
+<p>现将$R^2$空间中所有点逆时针旋转$\theta$，旋转后得到的新的点$X’$的坐标$x’$为：</p>
+<p>$$<br>\begin{aligned}<br>x’ &amp;= \begin{bmatrix} cos\theta, \quad -sin\theta \\<br>                    sin\theta, \quad cos\theta  \end{bmatrix} \cdot \begin{bmatrix} l\cdot cos\alpha \\ l\cdot sin\alpha\end{bmatrix} \\<br>&amp;= Q \cdot \vec{x}<br>\end{aligned}<br>$$</p>
+<p>从上式可以得到以下解读：</p>
+<ul>
+<li>$Q$矩阵实现了空间旋转</li>
+<li>旋转后的新基向量记为$q_i, i=1,2, \cdots, n$，$Q = (q_1, q_2, \cdots, q_n)$</li>
+<li>$Q$的列向量保持正交，且模长为1。意味着$QQ^T=I$。</li>
+<li>正交矩阵<strong>仅</strong>实现了空间旋转。</li>
+</ul>
+<h2 id="伸缩"><a href="#伸缩" class="headerlink" title="伸缩"></a>伸缩</h2><p>矩阵对空间的伸缩指：沿着基向量的方向对空间矢量$\vec{x}$进行伸缩。</p>
+<p>变化后，在默认坐标系下观察，与原向量相比，新向量与各基向量的夹角可能会变化；但在新坐标系下观察，角度没有变化。</p>
+<p>考虑伸缩矩阵$\Lambda = \begin{bmatrix} \lambda_1, &amp;\quad 0,  \quad \cdots,  \quad 0 \\<br>                                        0, &amp;\quad \lambda_2, \quad \cdots, \quad 0  \\<br>                                        \vdots, &amp;\quad \vdots, \quad \ddots, \quad \vdots \\<br>                                        0, &amp;\quad 0,  \quad \cdots, \quad \lambda_n<br>\end{bmatrix}$，<br>其物理意义为将向量沿第$i$基向量方向、伸缩$\lambda_i$。</p>
+<p>仍记新向量为$\vec{x’}$，即：<br>$$<br>\begin{aligned}<br>\vec{x’} &amp;= \Lambda \cdot \vec{x} \\<br>&amp;= (\lambda_1x_1, \lambda_2x_2, \cdots, \lambda_nx_n)^T<br>\end{aligned}<br>$$<br>显然，$\vec{x’}$的结果也反映了上述物理意义。</p>
+<p>需要指出的是，此处$\Lambda$是对角矩阵，实现的空间变换是对<strong>默认基向量的伸缩</strong>，也就是伸缩沿着默认基向量的方向进行。</p>
+<h2 id="复合变化"><a href="#复合变化" class="headerlink" title="复合变化"></a>复合变化</h2><p>所有空间变化都可以拆解为一系列旋转伸缩变化（不考虑降维）。（矩阵分解的一个体现？）<br>通常，我们倾向于将一个复杂矩阵分解为对角矩阵$\Lambda$与正交矩阵$Q$。</p>
+<p>但是，如前文所述，由于对角矩阵是在默认基向量的方向上进行伸缩，所以$\Lambda \cdot Q$与$Q \cdot \Lambda$结果不同。下文将对此进行讨论。</p>
+<h3 id="旋转–-gt-伸缩"><a href="#旋转–-gt-伸缩" class="headerlink" title="旋转–&gt;伸缩"></a>旋转–&gt;伸缩</h3><p>$\Lambda \cdot Q$</p>
 <h3 id="伸缩–-gt-旋转"><a href="#伸缩–-gt-旋转" class="headerlink" title="伸缩–&gt;旋转"></a>伸缩–&gt;旋转</h3><p>$Q \cdot \Lambda$</p>
 <p>效果不同</p>
 <h1 id="圆与椭圆变换"><a href="#圆与椭圆变换" class="headerlink" title="圆与椭圆变换"></a>圆与椭圆变换</h1><h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1>
